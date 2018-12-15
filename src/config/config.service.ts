@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { IProxy } from '../proxy/proxy.interface';
+import { IProxy } from '../gateway/proxy.interface';
 import { IConfigService } from './config.interface';
 
 @Injectable()

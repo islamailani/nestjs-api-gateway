@@ -7,9 +7,13 @@ import * as httpProxy from 'http-proxy-middleware';
   controllers: [],
   providers: [ConfigService],
 })
-export class ProxyModule implements NestModule {
+export class GatewayModule implements NestModule {
   constructor(private readonly config: ConfigService) {}
 
+  /**
+   * Apply http-proxy-middleware for Gateway Routes.
+   * @param consumer
+   */
   configure(consumer: MiddlewareConsumer) {
     this.config.getGatewayRoutes().map(route => {
       const options: httpProxy.Config = {

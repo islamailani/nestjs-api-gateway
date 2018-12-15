@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigService } from './config/config.service';
-import { ProxyModule } from './proxy/proxy.module';
+import { GatewayModule } from './gateway/gateway.module';
 
 @Module({
-  imports: [ProxyModule],
+  imports: [GatewayModule],
   controllers: [],
   providers: [ConfigService],
 })
