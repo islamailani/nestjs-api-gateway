@@ -12,6 +12,7 @@ export class GatewayModule implements NestModule {
 
   /**
    * Apply http-proxy-middleware for Gateway Routes.
+   * For more information, see: https://github.com/chimurai/http-proxy-middleware
    * @param consumer
    */
   configure(consumer: MiddlewareConsumer) {
