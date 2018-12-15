@@ -1,5 +1,5 @@
-import { IRoute } from '../proxy/route.interface';
+import { IProxy } from '../proxy/proxy.interface';
 
 export interface IConfigService {
-  getGatewayRoutes(): IRoute[];
+  getGatewayRoutes(): IProxy[];
 }

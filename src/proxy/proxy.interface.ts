@@ -1,4 +1,4 @@
-export interface IRoute {
+export interface IProxy {
   path: string[];
   target: string;
   prependPath?: boolean;

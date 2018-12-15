@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { IRoute } from '../proxy/route.interface';
+import { IProxy } from '../proxy/proxy.interface';
 import { IConfigService } from './config.interface';
 
 @Injectable()
 export class ConfigService implements IConfigService {
-  getGatewayRoutes(): IRoute[] {
+  getGatewayRoutes(): IProxy[] {
     return [
       {
         path: ['/api/**'],
