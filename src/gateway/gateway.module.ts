@@ -16,16 +16,15 @@ export class GatewayModule implements NestModule {
    * @param consumer
    */
   configure(consumer: MiddlewareConsumer) {
-    this.config.getGatewayRoutes().map(route => {
-      const options: httpProxy.Config = {
-        target: route.target,
-        changeOrigin: route.changeOrigin || true,
-        prependPath: route.prependPath || false,
-        logLevel: 'debug',
+    this.config.getGatewayRoutes().map(routeOptions => {
+      const proxyPath = routeOptions.path;
+      delete routeOptions.path;
+      const proxyOptions = {
+        ...this.config.getDefaultOptions(),
+        ...routeOptions,
       };
-
       consumer
-        .apply(httpProxy(route.path, options))
+        .apply(httpProxy(proxyPath, proxyOptions))
         .forRoutes('*');
     });
   }
