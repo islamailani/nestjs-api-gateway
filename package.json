@@ -1,6 +1,6 @@
 {
   "name": "nestjs-api-gateway",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "NestJS API Gateway is an open source TypeScript API Gateway that uses the NestJS Framework and architecture patterns to implement a simple and reliable gateway proxy for your web services.",
   "author": "Justin Wilson",
   "license": "MIT",
