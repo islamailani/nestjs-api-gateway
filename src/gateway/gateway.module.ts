@@ -1,14 +1,14 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-import { ConfigService } from '../config/config.service';
+import { GatewayService } from './gateway.service';
 import * as httpProxy from 'http-proxy-middleware';
 
 @Module({
   imports: [],
   controllers: [],
-  providers: [ConfigService],
+  providers: [GatewayService],
 })
 export class GatewayModule implements NestModule {
-  constructor(private readonly config: ConfigService) {}
+  constructor(private readonly gatewayService: GatewayService) {}
 
   /**
    * Apply http-proxy-middleware for Gateway Routes.
@@ -16,11 +16,11 @@ export class GatewayModule implements NestModule {
    * @param consumer
    */
   configure(consumer: MiddlewareConsumer) {
-    this.config.getGatewayRoutes().map(routeOptions => {
+    this.gatewayService.getRoutes().map(routeOptions => {
       const proxyPath = routeOptions.path;
       delete routeOptions.path;
       const proxyOptions = {
-        ...this.config.getDefaultOptions(),
+        ...this.gatewayService.getDefaultOptions(),
         ...routeOptions,
       };
       consumer

@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { IProxy } from '../gateway/proxy.interface';
-import { IConfigService } from './config.interface';
+import { IProxy } from './proxy.interface';
+import { IGatewayService } from './gateway.interface';
 
 @Injectable()
-export class ConfigService implements IConfigService {
+export class GatewayService implements IGatewayService {
   getDefaultOptions(): object {
     return {
       logLevel: 'debug',
@@ -12,7 +12,7 @@ export class ConfigService implements IConfigService {
     };
   }
 
-  getGatewayRoutes(): IProxy[] {
+  getRoutes(): IProxy[] {
     return [
       {
         path: ['/api/**'],
