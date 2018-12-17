@@ -2,7 +2,7 @@
   "defaultSeverity": "error",
   "extends": ["tslint:recommended"],
   "jsRules": {
-    "no-unused-expression": true
+    "no-unused-expression": false
   },
   "rules": {
     "quotemark": [true, "single"],
