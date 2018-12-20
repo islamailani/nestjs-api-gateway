@@ -1,22 +1,24 @@
+import * as crypto from 'crypto';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { UserEntity } from './user.entity';
-import { CreateUserDto, LoginUserDto } from './dto';
-import * as crypto from 'crypto';
+import { CreateUserDto } from './dto/create-user.dto';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(UserEntity)
     private readonly userRepository: Repository<UserEntity>,
-  ) {
-  }
+  ) {}
 
-  async findByCredentials(loginUserDto: LoginUserDto): Promise<UserEntity> {
+  async findByCredentials(
+    emailAddress: string,
+    password: string,
+  ): Promise<UserEntity> {
     const conditions = {
-      email: loginUserDto.email,
-      password: crypto.createHmac('sha256', loginUserDto.password).digest('hex'),
+      email: emailAddress,
+      password: crypto.createHmac('sha256', password).digest('hex'),
     };
     return await this.userRepository.findOne(conditions);
   }

@@ -5,7 +5,12 @@ module.exports = {
   username: 'root',
   password: 'rootpass',
   database: 'api_gateway_test1',
-  entities: ['src/**/**.entity.ts'],
+  entities: [__dirname + '/**/*.entity{.ts,.js}'],
   synchronize: true,
   logging: true,
+  migrationsTableName: 'custom_migration_table',
+  migrations: ['migration/*.ts'],
+  cli: {
+    migrationsDir: 'migration'
+  }
 };

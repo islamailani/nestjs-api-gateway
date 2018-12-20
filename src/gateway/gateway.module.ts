@@ -23,9 +23,7 @@ export class GatewayModule implements NestModule {
         ...this.gatewayService.getDefaultOptions(),
         ...routeOptions,
       };
-      consumer
-        .apply(httpProxy(proxyPath, proxyOptions))
-        .forRoutes('*');
+      consumer.apply(httpProxy(proxyPath, proxyOptions)).forRoutes('*');
     });
   }
 }

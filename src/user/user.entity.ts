@@ -11,6 +11,9 @@ export class UserEntity {
   isActive: boolean;
 
   @Column()
+  name: string;
+
+  @Column()
   @IsEmail()
   email: string;
 
