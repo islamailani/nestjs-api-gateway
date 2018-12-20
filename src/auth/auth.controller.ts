@@ -34,11 +34,6 @@ export class AuthController {
     return await this.authService.createToken(user.email);
   }
 
-  @Post('create-user')
-  async createUser(@Body() createUserDto: CreateUserDto): Promise<any> {
-    return await this.userService.create(createUserDto);
-  }
-
   @Get('data')
   @UseGuards(AuthGuard())
   findAll() {
