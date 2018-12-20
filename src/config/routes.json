@@ -1,7 +1,7 @@
 [{ "path"   : [ "/api/**" ],
   "target" : "https://reqres.in" },
   { "path"       : [ "/v1/**" ],
-    "target"     : "http://localhost:3001",
+    "target"     : "http://localhost:2000",
     "headers": {
       "X-Test": "Added Header"
     }},
